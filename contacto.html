@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aya & Koch Bienes Raíces</title>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="build/css/app.css">
+
+</head>
+<body>
+    <header class="header">
+        <div class="contenedor contenido-header">
+            <div class="barra">
+                <a href="/">
+                    <img src="build/img/logo.svg" alt="logotipo Aya y Koch">
+                </a>
+
+                <div class="mobile-menu">
+                    <img src="build/img/barras.svg" alt="ícono menú responsive">
+                </div>
+
+                <div class="derecha">
+                    <img class="dark-mode-boton" src="build/img/dark-mode.svg" alt="ícono dark mode">
+                    <nav class="navegacion">
+                        <a href="nosotros.html">Nosotros</a>
+                        <a href="anuncios.html">Anuncios</a>
+                        <a href="blog.html">Blog</a>
+                        <a href="contacto.html">Contacto</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>    
+
+    <main class="contenedor seccion">
+        <h1>Contacto</h1>
+
+        <picture>
+            <source srcset="build/img/destacada3.webp" type="image/webp">
+            <source srcset="build/img/destacada3.jpg" type="image/jpeg">
+            <img src="build/img/destacada3.jpg" alt="Imagen contacto">
+        </picture>
+
+        <h2>Rellena el formulario de contacto</h2>
+
+        <form class="formulario">
+            <fieldset>
+                <legend>Información Personal</legend>
+
+                <label for="name">Nombre</label>
+                <input type="text" placeholder="Tu Nombre" id="name">
+
+                <label for="email">Email</label>
+                <input type="email" placeholder="Tu Email" id="email">
+
+                <label for="tel">Teléfono</label>
+                <input type="tel" placeholder="Tu Teléfono" id="tel">
+
+                <label for="message">Mensaje</label>
+                <textarea id="message"></textarea>
+            </fieldset>
+
+            <fieldset>
+                <legend>Información sobre la propiedad</legend>
+
+                <label for="options">Comprar o Vender:</label>
+                <select id="options">
+                    <option value="" disabled selected>-- Selecciona --</option>
+                    <option value="compra">Comprar</option>
+                    <option value="Venta">Vender</option>
+                </select>
+
+                <label for="budget">Precio o Presupuesto</label>
+                <input type="number" placeholder="Precio o Presupuesto" id="budget">
+            </fieldset>
+
+            <fieldset>
+                <legend>Contacto</legend>
+                <p>¿Cómo deseas ser contactado?</p>
+
+                <div class="forma-contacto">
+                    <label for="contact-tel">Teléfono</label>
+                    <input name="contact" type="radio" value="phone" id="contact-tel">
+
+                    <label for="contact-email">Email</label>
+                    <input name="contact" type="radio" value="email" id="contact-email">
+                </div>
+
+                <p>Si elegiste contacto telefónico, indícanos fecha y hora para llamarte</p>
+
+                <label for="date">Fecha:</label>
+                <input type="date" id="date">
+
+                <label for="time">Hora:</label>
+                <input type="time" id="time" min="09:00" max="18:00">
+            </fieldset>
+
+            <input type="submit" value="Enviar" class="boton-verde">
+        </form>
+    </main>
+
+    <footer class="footer seccion">
+        <div class="contenedor contenedor-footer">
+            <nav class="navegacion">
+                <a href="nosotros.html">Nosotros</a>
+                <a href="anuncios.html">Anuncios</a>
+                <a href="blog.html">Blog</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+        </div>
+
+        <p class="copyright">Todos los derechos Reservados 2021 &copy;</p>
+    </footer>
+
+    <script src="build/js/bundle.min.js"></script>
+</body>
+</html>
