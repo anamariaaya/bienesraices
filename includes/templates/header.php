@@ -8,7 +8,7 @@
     <title>Aya & Koch Bienes Raíces</title>
 
     <!--CSS-->
-    <link rel="stylesheet" href="build/css/app.css">
+    <link rel="stylesheet" href="/build/css/app.css">
 
 </head>
 <body>
@@ -16,15 +16,15 @@
         <div class="contenedor contenido-header">
             <div class="barra">
                 <a href="/">
-                    <img src="build/img/logo.svg" alt="logotipo Aya y Koch">
+                    <img src="/build/img/logo.svg" alt="logotipo Aya y Koch">
                 </a>
 
                 <div class="mobile-menu">
-                    <img src="build/img/barras.svg" alt="ícono menú responsive">
+                    <img src="/build/img/barras.svg" alt="ícono menú responsive">
                 </div>
 
                 <div class="derecha">
-                    <img class="dark-mode-boton" src="build/img/dark-mode.svg" alt="ícono dark mode">
+                    <img class="dark-mode-boton" src="/build/img/dark-mode.svg" alt="ícono dark mode">
                     <nav class="navegacion">
                         <a href="nosotros.php">Nosotros</a>
                         <a href="anuncios.php">Anuncios</a>
