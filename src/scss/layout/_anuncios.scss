@@ -37,11 +37,11 @@
     li{
         flex: 1;
         display: flex;
+        align-items: center;
 
         img{
-            flex: 0 0 2rem;
+            flex: 0 0 3rem;
             margin-right: 1rem;
-            max-height: 5rem;
         }
         p{
             font-weight: $black;

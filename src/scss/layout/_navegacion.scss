@@ -35,10 +35,18 @@
     padding-top: 3rem;
     align-items: center;
 
+    img{
+        width: 32rem;
+    }
+
     @include tablet{
         flex-direction: row;
         justify-content: space-between;
         align-items: flex-end;
+
+        img{
+            width: 36rem;
+        }
     }
 }
 
