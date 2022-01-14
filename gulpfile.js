@@ -29,64 +29,70 @@ const path = {
 }
  
  
-function compileSass() {
-    return src(path.scss)
+function compileSass(done) {
+    src(path.scss)
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
         .pipe(postcss([autoPrefixer(),cssnano()]))
         .pipe(sourcemaps.write('.'))
         .pipe(dest('build/css'));
+    done();
 }
  
-function compileJS(){
-    return src(path.js)
+function compileJS(done){
+    src(path.js)
         .pipe(sourcemaps.init())
         .pipe(concat('bundle.js'))
         .pipe(terser())
         .pipe(sourcemaps.write('.'))
         .pipe(rename({suffix: '.min'}))
         .pipe(dest('build/js'));
+    done();
 }
  
  
-function imageMin(){
+function imageMin(done){
     const settings= {
         optimizationLevel:3
     }
  
-    return src(path.img)
+    src(path.img)
         .pipe(cache(imagemin(settings)))
         .pipe(dest('build/img'));
+    done();
 }
  
  
-function imgWebp(){
+function imgWebp(done){
  
     const settings={
         quality:50
     }
  
-    return src(path.img)
+    src(path.img)
         .pipe(webp(settings))
         .pipe(dest('build/img'));
+    done()
 }
  
  
-function imgAvif(){
+function imgAvif(done){
     const settings = {
         quality:50
     }
  
-    return src(path.img)
+    src(path.img)
         .pipe(avif(settings))
         .pipe(dest('build/img'));
+    done();
 }
  
  
-function imgSvg(){
-    return src(path.svg)
+function imgSvg(done){
+    src(path.svg)
         .pipe(svg())
         .pipe(dest('build/img'));
+    done();
 }
  
  
