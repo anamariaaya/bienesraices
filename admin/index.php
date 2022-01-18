@@ -70,9 +70,20 @@
             <?php while($propiedad = mysqli_fetch_assoc($resultadoConsulta)): ?>
                 <tr>
                     <td> <?php echo $propiedad['id']; ?> </td>
+
                     <td> <?php echo $propiedad['titulo']; ?> </td>
-                    <td><img class="imagen-tabla" src="/images/<?php echo $propiedad['imagen'];?>"></td>
+
+                    <td><img class="imagen-tabla" src="/images/<?php echo $propiedad['imagen'];?>"></td>    
+                        <!-- Muestra imagen genérica en caso de no encontrar imagen en la base de datos
+                        <img class="imagen-tabla" src="/images/<?//php// if ($propiedad['imagen']){
+                        //echo $propiedad['imagen'];
+                    //}else{
+                        //echo 'muestra.jpg';
+                    //}
+                    ?>"> -->
+
                     <td> <?php echo number_format($propiedad['precio'], 0, ',', '.') ;?>&euro;</td>
+
                     <td>
                         <!--Eliminar la propiedad-->
                         <form method="POST" class="w-100">
