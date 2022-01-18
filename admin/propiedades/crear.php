@@ -75,8 +75,8 @@
             $errores[] = 'La imagen es obligatoria';
         }
 
-        //Validar por tamaño (100kb máximo)
-        $medida = 1000 * 100;
+        //Validar por tamaño (1Mb máximo)
+        $medida = 1000 * 1000;
 
         if ($imagen['size'] > $medida){
             $errores[] = 'La imagen es muy pesada';
@@ -88,17 +88,33 @@
 
         //Revisar que el arreglo de errores esté vacío
         if(empty($errores)){
+
+            /*Subida de archivos */
+
+            //Crear carpeta
+            $carpetaImagenes = '../../images/';
+
+            if(!is_dir($carpetaImagenes)){
+                mkdir($carpetaImagenes);
+            }
+
+            //Generar un nombre único
+            $nombreImagen = md5( uniqid( rand(), true ) ) . ".jpg";
+
+            // Subir la imagen
+            move_uploaded_file($imagen['tmp_name'], $carpetaImagenes . $nombreImagen);
+
             //Insertar en la DDBB
-            $query = " INSERT INTO propiedades (titulo, precio, descripcion, habitaciones, wc, estacionamiento, creado, vendedorId ) VALUES('$titulo', '$precio', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', '$creado', '$vendedorId')";
+            $query = " INSERT INTO propiedades (titulo, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, vendedorId ) VALUES('$titulo', '$precio', '$nombreImagen', '$descripcion', '$habitaciones', '$wc', '$estacionamiento', '$creado', '$vendedorId')";
 
         //echo $query;
 
             $resultado = mysqli_query($db, $query);
             if($resultado) {                
                 //Redireccionar al usuario
-                header('Location: /admin');
-            } else{
-                echo '<script>alert."No se pudo crear la propiedad. Intenta de nuevo"</script>';
+                header('Location: /admin?resultado=1');
+            // } else{
+            //     echo '<script>alert."No se pudo crear la propiedad. Intenta de nuevo"</script>';
             }
         }    
     }
@@ -108,7 +124,7 @@
 ?>
 
     <main class="contenedor seccion">
-        <h1>Crear</h1>
+        <h1>Crear propiedad</h1>
 
         <a href="/admin" class="boton-verde">Volver al admin</a>
 
@@ -146,9 +162,7 @@
                     accept="image/jpeg, image/png">
 
                 <label for="descripcion">Descripción:</label>
-                <textarea id="descripcion" name="descripcion">
-                    <?php echo $descripcion;?>
-                </textarea>
+                <textarea id="descripcion" name="descripcion"><?php echo $descripcion;?></textarea>
             </fieldset>
 
             <fieldset>
