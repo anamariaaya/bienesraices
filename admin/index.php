@@ -13,6 +13,28 @@
     // Muestra mensaje condicional de crear.php
     $resultado = $_GET['resultado'] ?? null;
 
+    if($_SERVER['REQUEST_METHOD']=== 'POST'){
+        $id = $_POST['id'];
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+
+        if($id){
+            //Eliminar el archivo (imagen)
+            $query = "SELECT imagen FROM propiedades WHERE id = ${id}";
+            $resultado = mysqli_query($db, $query);
+            $propiedad = mysqli_fetch_assoc($resultado);
+
+            unlink('../images/' . $propiedad['imagen']);
+
+            //Eliminar la propiedad
+            $query = "DELETE FROM propiedades WHERE id = ${id}";
+            $resultado = mysqli_query($db, $query);
+
+            if($resultado){
+                header('location: /admin?resultado=3');
+            }
+        }
+    }
+
     //Trae el headder y lo incluye
     require '../includes/funciones.php';
     incluirTemplate('header');
@@ -27,6 +49,9 @@
             <script> alert('Anuncio creado')</script>
             <?php elseif(intval($resultado)===2):?>
                 <script> alert('Anuncio actualizado correctamente')</script>
+
+            <?php elseif(intval($resultado)===3):?>
+                <script> alert('Anuncio eliminado correctamente')</script>
         <?php endif; ?>
 
         <a href="/admin/propiedades/crear.php" class="boton-verde">Nueva propiedad</a>
@@ -49,7 +74,13 @@
                     <td><img class="imagen-tabla" src="/images/<?php echo $propiedad['imagen'];?>"></td>
                     <td> <?php echo number_format($propiedad['precio'], 0, ',', '.') ;?>&euro;</td>
                     <td>
-                        <a class="boton-rojo-block" href="">Eliminar</a>
+                        <!--Eliminar la propiedad-->
+                        <form method="POST" class="w-100">
+                            <input type="hidden" name="id" value="<?php echo $propiedad['id'];?> ">
+
+                            <input type="submit" class="boton-rojo-block" value="Eliminar">
+                        </form>
+
                         <a class="boton-amarillo-block" href="/admin/propiedades/actualizar.php?id=<?php echo $propiedad['id']; ?>">Actualizar</a>
                     </td>
                 </tr>
