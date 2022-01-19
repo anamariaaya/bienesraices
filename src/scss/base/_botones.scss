@@ -19,3 +19,9 @@
 .boton-verde-block{
     @include boton($verde, block);
 }
+
+.btn-volver{
+    color: $verde;
+    font-size: 2rem;
+    text-decoration: underline;
+}
