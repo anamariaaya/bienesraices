@@ -1,4 +1,8 @@
 <?php
+
+    //Validar el Id del click
+    $id = $_GET['id'];
+    
     require 'includes/funciones.php';
     incluirTemplate('header');
 ?>
