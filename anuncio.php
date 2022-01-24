@@ -15,6 +15,12 @@
     //Consultar los datos de la propiedad
     $consulta = "SELECT * FROM propiedades WHERE id = ${id}";
     $resultado = mysqli_query($db, $consulta);
+
+    if(!$resultado -> num_rows){
+        header('Location: /anuncios.php');
+    }
+
+
     $propiedad = mysqli_fetch_assoc($resultado);
 
     require 'includes/funciones.php';
@@ -50,5 +56,7 @@
     </main>
 
 <?php
+    mysqli_close($db);
+
     incluirTemplate('footer');
 ?>

@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', function(){
     eventListeners();
 
     darkMode();
+
+    menuDropdown();
 });
 
 function darkMode(){
@@ -44,15 +46,24 @@ function darkMode(){
 }
 
 function eventListeners(){
-    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileMenu = document.querySelector('.mobile-menu');  
 
-    mobileMenu.addEventListener('click', navegacionResponsive);
+    mobileMenu.addEventListener('click', navegacionResponsive);    
 }
 
 function navegacionResponsive(){
     const navegacion = document.querySelector('.navegacion');
 
     navegacion.classList.toggle('mostrar');
+}
+
+function menuDropdown(){
+    const submenu = document.querySelector('.submenu');
+    const dropdown = document.querySelector('.dropdown');
+
+    submenu.onclick = function(){
+        dropdown.classList.toggle('visible');
+    }
 }
 
 // function navegacionResponsive(){

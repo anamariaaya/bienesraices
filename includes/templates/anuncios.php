@@ -10,6 +10,14 @@ $query = "SELECT * FROM propiedades ORDER BY creado DESC LIMIT {$limite}";
 //Obtener resultados
 $resultado = mysqli_query($db, $query);
 
+function truncate($text, $chars = 50) {
+    $text = $text." ";
+    $text = substr($text,0,$chars);
+    $text = substr($text,0,strrpos($text,' '));
+    $text = $text."..."; // Si no se desea tener tres puntos suspensivos se comenta esta línea.
+    return $text;
+}
+
 ?>
 
 <div class="contenedor-anuncios">
@@ -20,7 +28,8 @@ $resultado = mysqli_query($db, $query);
 
         <div class="contenido-anuncio">
             <h3><?php echo $propiedad['titulo'] ?></h3>
-            <p><?php echo $propiedad['descripcion'] ?></p>
+            <p><?php echo truncate($propiedad['descripcion'], 60) ?></p>
+
             <p class="precio"><?php echo number_format($propiedad['precio'], 0, ',', '.') ?> &euro;</p>
 
             <ul class="iconos-caracteristicas">

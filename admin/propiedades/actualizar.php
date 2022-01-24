@@ -1,5 +1,10 @@
 <?php
+    require '../../includes/funciones.php';
+    $auth = estaAutenticado();
 
+    if(!$auth){
+        header('Location: /');
+    }
     //Traemos el id de la propiedad a la que hicimos click
     $id = $_GET['id'];
     //Validar la URL por ID válido
@@ -139,7 +144,7 @@
         }    
     }
 
-    require '../../includes/funciones.php';
+    
     incluirTemplate('header');
 ?>
 

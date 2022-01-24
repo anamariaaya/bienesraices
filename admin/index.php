@@ -1,4 +1,11 @@
 <?php
+    //Sesión del usuario
+    require '../includes/funciones.php';
+    $auth = estaAutenticado();
+
+    if(!$auth){
+        header('Location: /');
+    }
 
     //Importar la conexión
     require '../includes/config/database.php';    
@@ -36,7 +43,6 @@
     }
 
     //Trae el headder y lo incluye
-    require '../includes/funciones.php';
     incluirTemplate('header');
 ?>
 
