@@ -36,6 +36,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
                 //Llenar el arreglo de la sesión
                 $_SESSION['usuario'] = $usuario['email'];
+                $_SESSION['nombre'] = $usuario['nombre'];
                 $_SESSION['login'] = true;
 
                 header('Location: /admin');

@@ -39,7 +39,10 @@
                         <a href="/blog.php">Blog</a>
                         <a href="/contacto.php">Contacto</a>
                         <?php if($auth): ?>
-                            <div class="submenu"><?php echo $_SESSION['usuario'];?>&ShortDownArrow;</a>
+                            <div class="submenu"><?php echo $_SESSION['nombre']; if (!$_SESSION['nombre']){
+                                echo 'Usuario';
+                            }
+                            ;?>&ShortDownArrow;</a>
                             <div class="dropdown">
                                 <a href="/admin/" class="admin">Admin</a>
                                 <a href="/cerrar-sesion.php">Cerrar Sesión</a>                                

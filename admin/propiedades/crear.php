@@ -32,9 +32,7 @@
 
         //  echo "<pre>";
         //  var_dump($_FILES);
-        //  echo "</pre>";
-        
-
+        //  echo "</pre>"; 
 
         $titulo = mysqli_real_escape_string( $db, $_POST['titulo'] );
         $precio = mysqli_real_escape_string( $db, $_POST['precio'] );
@@ -57,8 +55,8 @@
             $errores[] = 'Añade un precio';
         }
 
-        if(strlen($descripcion) < 50){
-            $errores[] = 'Añade una descripción de al menos 50 caracteres';
+        if(strlen($descripcion) < 40){
+            $errores[] = 'Añade una descripción de al menos 40 caracteres';
         }
 
         if(!$habitaciones){
