@@ -1,0 +1,17 @@
+{
+    "name": "megan/bienesraices",
+    "description": "Creando un proyecto con OOP",
+    "type": "project",
+    "authors": [
+        {
+            "name": "AnaMa",
+            "email": "anamariaaya@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\" : "./classes"
+        }
+    }
+}

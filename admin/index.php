@@ -42,7 +42,7 @@
         }
     }
 
-    //Trae el headder y lo incluye
+    //Trae el header y lo incluye
     incluirTemplate('header');
 ?>
 
@@ -53,6 +53,7 @@
         <?php if (intval($resultado)===1):?>
             <!-- <p class="alerta exito">Anuncio creado correctamente</p> -->
             <script> alert('Anuncio creado')</script>
+           
             <?php elseif(intval($resultado)===2):?>
                 <script> alert('Anuncio actualizado correctamente')</script>
 
