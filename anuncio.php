@@ -9,7 +9,7 @@
         header('Location: /anuncios.php');
     }
      // Base de datos
-     require 'includes/config/database.php';    
+     require 'includes/app.php';
      $db = conectarDB();    
 
     //Consultar los datos de la propiedad
@@ -23,7 +23,7 @@
 
     $propiedad = mysqli_fetch_assoc($resultado);
 
-    require 'includes/funciones.php';
+
     incluirTemplate('header');
 ?>
 

@@ -1,6 +1,5 @@
 <?php
 //Importar la conexión a BBDD
-    require __DIR__ . '/../config/database.php';
     $db = conectarDB();
 
 //Consultar

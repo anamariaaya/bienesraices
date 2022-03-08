@@ -1,6 +1,6 @@
 <?php
-    require '../../includes/funciones.php';
-    $auth = estaAutenticado();
+    require '../../includes/app.php';
+    estaAutenticado();
 
     if(!$auth){
         header('Location: /');
