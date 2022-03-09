@@ -77,7 +77,7 @@ class ActiveRecord{
  
      public function atributos(){
          $atributos = [];
-         foreach(self::$columnasDB as $columna){
+         foreach(static::$columnasDB as $columna){
              if($columna === 'id') continue;
              $atributos[$columna] = $this->$columna;
          }
@@ -117,43 +117,12 @@ class ActiveRecord{
  
      //Validación
      public static function getErrores(){
-         return self::$errores;
+         return static::$errores;
      }
  
      public function validar(){
-         if(!$this->titulo){
-             self::$errores[] = 'Añade un título';
-         }
- 
-         if(!$this->precio){
-             self::$errores[] = 'Añade un precio';
-         }
- 
-         if(strlen($this->descripcion) < 40){
-             self::$errores[] = 'Añade una descripción de al menos 40 caracteres';
-         }
- 
-         if(!$this->habitaciones){
-             self::$errores[] = 'Añade Número de habitaciones';
-         }
- 
-         if(!$this->wc){
-             self::$errores[] = 'Añade Número de baños';
-         }
- 
-         if(!$this->estacionamiento){
-             self::$errores[] = 'Añade Número de estacionamientos';
-         }
- 
-         if(!$this->vendedorId){
-             self::$errores[] = 'Elige un vendedor';
-         }
- 
-         if(!$this->imagen){
-             self::$errores[] = 'La imagen es obligatoria';
-         }
- 
-         return self::$errores;
+        static::$errores = [];
+        return static::$errores;
      }
  
      //Lista todos los registros
@@ -180,7 +149,7 @@ class ActiveRecord{
          //Iterar los Resultados
          $array = [];
          while($registro = $resultado->fetch_assoc()){
-             $array[] = self::crearObjeto($registro);
+             $array[] = static::crearObjeto($registro);
          }
  
          //Liberar la memoria
