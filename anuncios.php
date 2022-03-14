@@ -7,9 +7,9 @@
         <h2>Casas y Pisos en venta</h2>
 
         <?php
-            $limite = 1000;
             include 'includes/templates/anuncios.php';
         ?>
+        
     </main>
 
 <?php

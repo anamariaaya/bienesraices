@@ -3,6 +3,7 @@
     require '../includes/app.php';
     estaAutenticado();
 
+    //Importar las clases
     use App\Propiedad;
     use App\Vendedor;
 
@@ -14,6 +15,7 @@
     $resultado = $_GET['resultado'] ?? null;
 
     if($_SERVER['REQUEST_METHOD']=== 'POST'){
+        //Validar ID
         $id = $_POST['id'];
         $id = filter_var($id, FILTER_VALIDATE_INT);
 
@@ -30,9 +32,7 @@
                     $propiedad->eliminar();
                 }
 
-            }
-
-            
+            }            
         }
     }
 
@@ -44,16 +44,11 @@
         <h1>Administrador de Aya & Koch - Bienes Raíces</h1>
 
         <!-- Agregamos un mensaje de éxito al crear la propiedad -->
-        <?php if (intval($resultado)===1):?>
-            <!-- <p class="alerta exito">Anuncio creado correctamente</p> -->
-            <script> alert('Anuncio creado')</script>
-           
-            <?php elseif(intval($resultado)===2):?>
-                <script> alert('Anuncio actualizado correctamente')</script>
-
-            <?php elseif(intval($resultado)===3):?>
-                <script> alert('Anuncio eliminado correctamente')</script>
-        <?php endif; ?>
+        <?php
+            $mensaje = mostrarNotificacion( intval($resultado));
+            if($mensaje){ ?>
+                <p class="alerta exito"><?php echo s($mensaje)  ?></p>        
+        <?php }?>      
 
         <a href="/admin/propiedades/crear.php" class="boton-verde">Nueva propiedad</a>
         <a href="/admin/vendedores/crear.php" class="boton-verde">Nuevo Vendedor</a>

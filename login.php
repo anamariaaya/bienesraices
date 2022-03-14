@@ -1,7 +1,6 @@
 <?php
 
 require 'includes/app.php';
-$db = conectarDB();
 
 //Autentica el usuario
 $errores = [];

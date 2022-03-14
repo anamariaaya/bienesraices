@@ -27,7 +27,6 @@
     $errores = Propiedad::getErrores();
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-
         //Asignar los atributos
         $args = $_POST['propiedad'];
 
@@ -51,12 +50,10 @@
             //Revisar que el arreglo de errores esté vacío
             if($_FILES['propiedad']['tmp_name']['imagen']){
                
-                $image->save(CARPETA_IMAGENES . $nombreImagen);
-
-                $propiedad->guardar();
+                $image->save(CARPETA_IMAGENES . $nombreImagen);               
             }            
             //Almacenar la imagen
-            
+            $propiedad->guardar();
         }    
     }
 

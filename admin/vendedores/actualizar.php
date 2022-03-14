@@ -19,17 +19,17 @@ $errores = Vendedor::getErrores();
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $args = $_POST['vendedor'];
+    
 
     //Sincronizar obj en memoria con lo que escribe el usuario
     $vendedor->sincronizar($args);
-
+    
     //Validación
     $errores = $vendedor->validar();
 
     if(empty($errores)){
-        $vendedor->guardar();
+        $vendedor->guardar();        
     }
-
 }
 
 
@@ -47,7 +47,7 @@ incluirTemplate('header');
             </div>
         <?php endforeach; ?>
 
-        <form class="formulario" method="POST" action="/admin/vendedores/actualizar.php" enctype="multipart/form-data">
+        <form class="formulario" method="POST">
             <?php include '../../includes/templates/formulario_vendedores.php'; ?>
 
             <input type="submit" value="Guardar Cambios" class="boton-amarillo">

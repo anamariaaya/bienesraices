@@ -39,7 +39,6 @@
 
         <?php
         //Límite de propiedades que se muestran en index
-        $limite = 3;
         include 'includes/templates/anuncios.php';
         ?>
 
